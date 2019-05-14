@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "/home/liuziyuan/.pyenv/versions/ssq",
+    "python.linting.mypyPath" : "/home/liuziyuan/.pyenv/versions/3.7.1/envs/ssq/lib/python3.7/site-packages"
+}
