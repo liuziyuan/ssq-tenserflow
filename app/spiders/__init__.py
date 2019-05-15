@@ -1,7 +1,8 @@
 import requests
-from pyquery import PyQuery as pq
+from bs4 import BeautifulSoup
 
-def get_doc(url):
+
+def get_soup(url):
     """get PyQuery object"""
     try:
         page = requests.get(url)
@@ -9,6 +10,6 @@ def get_doc(url):
     except requests.RequestException as exc:
         raise exc
     else:
-        # page.encoding = 'utf-8'
-        doc = pq(page.text)
-        return doc
+        page.encoding = 'utf-8'
+        soup = BeautifulSoup(page.text, 'html.parser')
+        return soup
