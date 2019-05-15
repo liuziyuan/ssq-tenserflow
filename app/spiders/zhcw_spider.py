@@ -7,20 +7,22 @@ class ZhcwSpider(object):
     FIRST_PAGE = 1
     total_dic = {'count': 0, 'page': 0}
     def __init__(self, url):
-        self.total_c = 0
-        self.total_page = 0
         self.url = url_utils.replace_url_placeholder(url, self.FIRST_PAGE)
         self.first_doc = spiders.get_doc(self.url)
+        self.total_count = int(self.__get_total_count())
+        self.total_page = int(self.__get_total_page())
+        self.urls = self.__get_all_page_urls(url)
+
+    def __get_all_page_urls(self):
         urls = []
-        
+        for page in range(self.total_page):
+            urls.append(url_utils.replace_url_placeholder(self.url, page))
+        return urls  
 
-    def get_ssq(self):
-        doc = spiders.get_doc(self.url)
-
-    def get_total_count(self):
+    def __get_total_count(self):
         return self.__get_total_dic('count')
 
-    def get_total_page(self):
+    def __get_total_page(self):
         return self.__get_total_dic('page')
 
     def __get_total_dic(self, key):
