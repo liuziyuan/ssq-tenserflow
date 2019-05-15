@@ -5,9 +5,12 @@ yaml_dic = yaml_utils.get_config_yaml()
 zhcw_ssq_url = yaml_dic['zhcw_ssq_url']
 
 zhcw_spider = ZhcwSpider(zhcw_ssq_url)
-print(zhcw_spider.total_count)
-print(zhcw_spider.total_page)
-zhcw_spider.get_data_table()
+page_urls = zhcw_spider.get_page_urls()
+for current_url in page_urls:
+    zhcw_spider.get_current_page_data(current_url)
+
+
+
 
 
 
