@@ -13,10 +13,10 @@ class ZhcwSpider(object):
         self.total_page = int(self.__get_total_page())
         self.urls = self.__get_all_page_urls(url)
 
-    def __get_all_page_urls(self):
+    def __get_all_page_urls(self, url):
         urls = []
         for page in range(self.total_page):
-            urls.append(url_utils.replace_url_placeholder(self.url, page))
+            urls.append(url_utils.replace_url_placeholder(url, page))
         return urls  
 
     def __get_total_count(self):
